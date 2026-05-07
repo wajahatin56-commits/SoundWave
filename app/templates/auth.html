@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="theme-color" content="#0a0a0f"/>
+  <title>SoundWave — Sign In</title>
+
+  <!-- Preconnect to font CDN first, then swap in font with font-display:swap -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <!-- font-display=swap prevents invisible text during font load -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <!-- Preload the auth stylesheet so it arrives before paint -->
+  <link rel="preload" href="/static/auth.css" as="style"/>
+  <link rel="stylesheet" href="/static/auth.css"/>
+</head>
+<body>
+
+  <div class="auth-ambient"></div>
+  <div class="auth-noise"></div>
+
+  <div class="auth-card">
+
+    <!-- Logo -->
+    <div class="auth-logo">
+      <div class="auth-logo-icon">
+        <svg viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="16" r="14" stroke="var(--accent)" stroke-width="2"/>
+          <path d="M10 20 Q16 8 22 20" stroke="var(--accent)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="3" fill="var(--accent)"/>
+        </svg>
+      </div>
+      <span class="auth-logo-text">SoundWave</span>
+    </div>
+
+    <!-- Tabs -->
+    <div class="auth-tabs" role="tablist" aria-label="Authentication">
+      <button class="auth-tab" id="tab-login" role="tab" aria-controls="panel-login" aria-selected="false">
+        Sign In
+      </button>
+      <button class="auth-tab" id="tab-register" role="tab" aria-controls="panel-register" aria-selected="false">
+        Create Account
+      </button>
+    </div>
+
+    <!-- ── LOGIN PANEL ──────────────────────────────────── -->
+    <div class="auth-panel" id="panel-login" role="tabpanel" aria-labelledby="tab-login">
+      <h1 class="auth-title">Welcome back</h1>
+      <p class="auth-subtitle">Sign in to continue to your library.</p>
+
+      <div class="auth-message" id="login-message" role="alert"></div>
+
+      <div class="field">
+        <label for="login-username">Username or Email</label>
+        <input
+          type="text"
+          id="login-username"
+          name="username"
+          autocomplete="username"
+          placeholder="your_username"
+          spellcheck="false"
+          autocapitalize="none"
+        />
+      </div>
+
+      <div class="field">
+        <label for="login-password">Password</label>
+        <div class="pw-wrap">
+          <input
+            type="password"
+            id="login-password"
+            name="password"
+            autocomplete="current-password"
+            placeholder="••••••••"
+          />
+          <button class="pw-toggle" type="button" aria-label="Show password" data-target="login-password">
+            <svg class="icon-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <svg class="icon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+              <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+              <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+              <line x1="1" y1="1" x2="23" y2="23"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <button class="auth-btn" id="login-btn" type="button">
+        <span class="btn-text">Sign In</span>
+        <span class="btn-spinner"></span>
+      </button>
+
+      <p class="auth-switch">
+        Don't have an account?
+        <a href="#" data-switch="register">Create one</a>
+      </p>
+    </div>
+
+    <!-- ── REGISTER PANEL ───────────────────────────────── -->
+    <div class="auth-panel" id="panel-register" role="tabpanel" aria-labelledby="tab-register">
+      <h1 class="auth-title">Create account</h1>
+      <p class="auth-subtitle">Join SoundWave and sync your library.</p>
+
+      <div class="auth-message" id="register-message" role="alert"></div>
+
+      <div class="field">
+        <label for="reg-username">Username</label>
+        <input
+          type="text"
+          id="reg-username"
+          name="username"
+          autocomplete="username"
+          placeholder="cool_username"
+          spellcheck="false"
+          autocapitalize="none"
+          maxlength="32"
+        />
+      </div>
+
+      <div class="field">
+        <label for="reg-email">Email <span style="color:var(--text3);font-weight:400">(optional)</span></label>
+        <input
+          type="email"
+          id="reg-email"
+          name="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          spellcheck="false"
+        />
+      </div>
+
+      <div class="field">
+        <label for="reg-password">Password</label>
+        <div class="pw-wrap">
+          <input
+            type="password"
+            id="reg-password"
+            name="password"
+            autocomplete="new-password"
+            placeholder="At least 8 characters"
+          />
+          <button class="pw-toggle" type="button" aria-label="Show password" data-target="reg-password">
+            <svg class="icon-show" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+            <svg class="icon-hide" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none">
+              <path d="M17.94 17.94A10.07 10.07 0 0112 20c-7 0-11-8-11-8a18.45 18.45 0 015.06-5.94"/>
+              <path d="M9.9 4.24A9.12 9.12 0 0112 4c7 0 11 8 11 8a18.5 18.5 0 01-2.16 3.19"/>
+              <line x1="1" y1="1" x2="23" y2="23"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <button class="auth-btn" id="register-btn" type="button">
+        <span class="btn-text">Create Account</span>
+        <span class="btn-spinner"></span>
+      </button>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a href="#" data-switch="login">Sign in</a>
+      </p>
+    </div>
+
+  </div><!-- /.auth-card -->
+
+  <script>
+  "use strict";
+  /* =====================================================================
+     auth.html inline script — tab switching, password toggle, form submit.
+     Inlined to avoid an extra network round-trip for a small script.
+     ===================================================================== */
+
+  // ── Tab switching ────────────────────────────────────────────────────────
+  const tabs   = { login: document.getElementById("tab-login"),   register: document.getElementById("tab-register") };
+  const panels = { login: document.getElementById("panel-login"), register: document.getElementById("panel-register") };
+
+  function switchTab(name) {
+    Object.keys(tabs).forEach(k => {
+      tabs[k].classList.toggle("active", k === name);
+      tabs[k].setAttribute("aria-selected", k === name ? "true" : "false");
+      panels[k].classList.toggle("active", k === name);
+    });
+    clearMessages();
+  }
+
+  // Server-rendered initial tab (login or register)
+  switchTab("{{ initial_tab | default('login') }}" === "register" ? "register" : "login");
+
+  tabs.login.addEventListener("click",    () => switchTab("login"));
+  tabs.register.addEventListener("click", () => switchTab("register"));
+
+  document.querySelectorAll("[data-switch]").forEach(a => {
+    a.addEventListener("click", e => { e.preventDefault(); switchTab(a.dataset.switch); });
+  });
+
+  // ── Password visibility toggles ──────────────────────────────────────────
+  document.querySelectorAll(".pw-toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const input  = document.getElementById(btn.dataset.target);
+      const isHide = input.type === "password";
+      input.type = isHide ? "text" : "password";
+      btn.querySelector(".icon-show").style.display = isHide ? "none" : "";
+      btn.querySelector(".icon-hide").style.display = isHide ? "" : "none";
+      btn.setAttribute("aria-label", isHide ? "Hide password" : "Show password");
+    });
+  });
+
+  // ── Message helpers ───────────────────────────────────────────────────────
+  function showMessage(id, text, type) {
+    type = type || "error";
+    const el = document.getElementById(id);
+    el.textContent = text;
+    el.className = "auth-message " + type;
+  }
+  function clearMessages() {
+    document.querySelectorAll(".auth-message").forEach(el => {
+      el.className = "auth-message";
+      el.textContent = "";
+    });
+    document.querySelectorAll(".field input").forEach(i => i.classList.remove("error"));
+  }
+  function setBusy(btn, busy) {
+    btn.disabled = busy;
+    btn.classList.toggle("loading", busy);
+  }
+
+  // ── POST helper ───────────────────────────────────────────────────────────
+  async function apiPost(url, body) {
+    const res  = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+      credentials: "same-origin",
+    });
+    const data = await res.json().catch(() => ({}));
+    return { ok: res.ok, status: res.status, data };
+  }
+
+  // ── After successful auth: sync localStorage likes, then redirect ─────────
+  async function onAuthSuccess() {
+    try {
+      const stored = JSON.parse(localStorage.getItem("sw_liked") || "[]");
+      if (stored.length) {
+        await fetch("/api/user/likes/sync", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ song_ids: stored }),
+          credentials: "same-origin",
+        });
+        localStorage.removeItem("sw_liked");
+      }
+    } catch (_) { /* non-fatal */ }
+    window.location.href = "/";
+  }
+
+  // ── Login ─────────────────────────────────────────────────────────────────
+  const loginBtn = document.getElementById("login-btn");
+  loginBtn.addEventListener("click", async () => {
+    clearMessages();
+    const username = document.getElementById("login-username").value.trim();
+    const password = document.getElementById("login-password").value;
+
+    if (!username) {
+      document.getElementById("login-username").classList.add("error");
+      showMessage("login-message", "Please enter your username or email.");
+      return;
+    }
+    if (!password) {
+      document.getElementById("login-password").classList.add("error");
+      showMessage("login-message", "Please enter your password.");
+      return;
+    }
+
+    setBusy(loginBtn, true);
+    const { ok, data } = await apiPost("/auth/login", { username, password });
+    setBusy(loginBtn, false);
+
+    if (ok) await onAuthSuccess();
+    else showMessage("login-message", data.error || "Login failed. Please try again.");
+  });
+
+  // Enter key submits on login fields
+  ["login-username", "login-password"].forEach(id => {
+    document.getElementById(id).addEventListener("keydown", e => {
+      if (e.key === "Enter") loginBtn.click();
+    });
+  });
+
+  // ── Register ──────────────────────────────────────────────────────────────
+  const regBtn = document.getElementById("register-btn");
+  regBtn.addEventListener("click", async () => {
+    clearMessages();
+    const username = document.getElementById("reg-username").value.trim();
+    const email    = document.getElementById("reg-email").value.trim();
+    const password = document.getElementById("reg-password").value;
+
+    if (!username) {
+      document.getElementById("reg-username").classList.add("error");
+      showMessage("register-message", "Please choose a username.");
+      return;
+    }
+    if (!password) {
+      document.getElementById("reg-password").classList.add("error");
+      showMessage("register-message", "Please set a password.");
+      return;
+    }
+
+    setBusy(regBtn, true);
+    const body = { username, password };
+    if (email) body.email = email;
+    const { ok, data } = await apiPost("/auth/register", body);
+    setBusy(regBtn, false);
+
+    if (ok) await onAuthSuccess();
+    else showMessage("register-message", data.error || "Registration failed. Please try again.");
+  });
+
+  // Enter key submits on register fields
+  ["reg-username", "reg-email", "reg-password"].forEach(id => {
+    document.getElementById(id).addEventListener("keydown", e => {
+      if (e.key === "Enter") regBtn.click();
+    });
+  });
+  </script>
+</body>
+</html>
