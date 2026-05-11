@@ -1,22 +1,11 @@
-Here’s a polished `README.md` based on the content you provided, with proper Markdown formatting, badges, structure, and placeholders for screenshots.
-
-```markdown
 # SoundWave 🎵
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![Flask](https://img.shields.io/badge/flask-2.0%2B-lightgrey)
 
-A modern self-hosted music streaming platform built with Python and Flask.  
+A modern self-hosted music streaming platform built with Python and Flask.
 SoundWave delivers a smooth Spotify-inspired experience with local music hosting, responsive UI, favorites, search, downloads, and a powerful fullscreen player.
-
----
-
-## Preview
-
-> Add your application screenshot here
-
-![SoundWave Interface](assets/interface.png)
 
 ---
 
@@ -41,20 +30,11 @@ SoundWave delivers a smooth Spotify-inspired experience with local music hosting
 
 ## Tech Stack
 
-### Backend
-- Python
-- Flask
-- Flask APIs
-- Mutagen
-
-### Frontend
-- HTML5
-- CSS3
-- JavaScript
-
-### Database / Storage
-- SQLite
-- Local file storage
+| Layer | Technologies |
+|---|---|
+| **Backend** | Python, Flask, Flask APIs, Mutagen |
+| **Frontend** | HTML5, CSS3, JavaScript |
+| **Storage** | SQLite, Local file storage |
 
 ---
 
@@ -83,7 +63,6 @@ SoundWave/
 │
 ├── instance/
 ├── songs/
-│
 ├── .env
 ├── .gitignore
 ├── requirements.txt
@@ -95,28 +74,28 @@ SoundWave/
 
 ## Installation
 
-### Clone Repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/SoundWave.git
 cd SoundWave
 ```
 
-### Create Virtual Environment
+### 2. Create a Virtual Environment
 
-**Windows**  
+**Windows**
 ```bash
 python -m venv venv
 venv\Scripts\activate
 ```
 
-**Linux / macOS**  
+**Linux / macOS**
 ```bash
 python3 -m venv venv
 source venv/bin/activate
 ```
 
-### Install Dependencies
+### 3. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -126,12 +105,12 @@ pip install -r requirements.txt
 
 ## Running the Application
 
-### Development Mode
+**Development Mode**
 ```bash
 python run.py
 ```
 
-### Production Mode
+**Production Mode**
 ```bash
 python run_prod.py
 ```
@@ -142,7 +121,7 @@ python run_prod.py
 
 Create a `.env` file in the root directory:
 
-```ini
+```env
 SECRET_KEY=your_secret_key
 FLASK_ENV=development
 ```
@@ -151,20 +130,20 @@ FLASK_ENV=development
 
 ## Screenshots
 
-### Home Interface  
-![Home](assets/home.png)
+### Home Interface
+![Home Interface](screenshots/home.png)
 
-### Fullscreen Player  
-![Player](assets/player.png)
+### Fullscreen Player
+![Fullscreen Player](screenshots/full.png)
 
 ---
 
 ## API & Streaming
 
-SoundWave uses a Flask-based backend API to:
+SoundWave uses a Flask-based REST API to:
 
 - Stream audio files
-- Fetch metadata
+- Fetch song metadata
 - Handle authentication
 - Manage favorites
 - Serve thumbnails
@@ -196,20 +175,16 @@ SoundWave uses a Flask-based backend API to:
 
 ## Author
 
-**Ahsan Raza**  
-Python Backend Developer & Creator of SoundWave
+**Ahsan Raza** — Python Backend Developer & Creator of SoundWave
 
 ---
 
 ## License
 
-This project is licensed under the **MIT License**.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## Star the Repository ⭐
+## ⭐ Star the Repository
 
-If you like the project, consider giving it a star on GitHub.
-```
-
-You can copy this directly into your `README.md` file. Replace placeholder image paths (`assets/...`) with your actual screenshots, and update the GitHub clone URL.
+If you find this project useful, consider giving it a star on GitHub!
