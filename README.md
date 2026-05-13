@@ -77,7 +77,7 @@ SoundWave/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/SoundWave.git
+git clone https://github.com/wajahatin56-commits/SoundWave.git
 cd SoundWave
 ```
 
